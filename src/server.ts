@@ -339,7 +339,7 @@ export class PrivateJournalServer {
   // Returns the backgrounded promise so callers that *do* want to await
   // it (tests, or a future --warm-on-start flag) have a handle.
   private warmEmbeddingsInBackground(): Promise<void> {
-    const task = (async () => {
+    const task = (async (): Promise<void> => {
       try {
         console.error('Checking for missing embeddings (background)...');
         const count = await this.journalManager.generateMissingEmbeddings();
